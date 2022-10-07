@@ -14,13 +14,6 @@ class LoginController extends Controller
     }
 
     function index(){
-        return view('welcome',
-        [
-            "title" => "Login",
-            "votes" => Vote::with(['users', 'candidates'])->get(),
-            "candidates" => Candidate::with(['votes'])->get(),
-            "users" => User::all()
-        ]
-    );
+        return view('login');
     }
 }

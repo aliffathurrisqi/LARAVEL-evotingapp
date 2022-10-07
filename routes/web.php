@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'default']);
 
-Route::get('/login', [LoginController::class, 'index']);
+// Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/home', [IndexController::class, 'index']);

@@ -19,13 +19,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $jmlCandidate = 5;
-        $jmlSuara = 957;
+        $jmlCandidate = 3;
+        $jmlSuara = 27;
 
         User::create([
-            "username" => 'admin',
-            "name" => 'Aliffathur Risqi Hidayat',
-            "password" => Hash::make('31032000Alif')
+            'username' => "admin",
+            'name' => "Aliffathur Risqi Hidayat",
+            'password' => Hash::make("31032000Alif"),
+            'isAdmin' => true
             ]);
 
         Candidate::factory($jmlCandidate)->create();
@@ -35,8 +36,8 @@ class DatabaseSeeder extends Seeder
 
         for($i = 2; $i<= $jmlSuara+1 ; $i++){
             Vote::create([
-                "candidate_id" => mt_rand(1, $jmlCandidate ),
-                "user_id" => $i
+                'candidate_id' => mt_rand(1, $jmlCandidate ),
+                'user_id' => $i
             ]);
         }
 

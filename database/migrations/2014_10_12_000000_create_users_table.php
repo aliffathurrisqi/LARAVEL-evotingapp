@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('name');
             $table->string('password');
+            $table->boolean('isAdmin');
             $table->timestamps();
         });
     }
