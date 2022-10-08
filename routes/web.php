@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,5 @@ Route::get('/home', [IndexController::class, 'index'])->middleware('user');
 Route::post('/votes/make', [IndexController::class, 'vote'])->middleware('user');
 
 Route::get('/votes', [IndexController::class, 'show'])->middleware('user');
+
+Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
