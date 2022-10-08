@@ -20,4 +20,15 @@ class IndexController extends Controller
         ]
     );
     }
+
+    function show(){
+        return view('showvote',
+        [
+            "title" => "Perolehan",
+            "votes" => Vote::with(['users', 'candidates'])->get(),
+            "candidates" => Candidate::with(['votes'])->get(),
+            "users" => User::all()
+        ]
+    );
+    }
 }
