@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('candidate_id');
-            $table->foreignId('user_id');
+            $table->string('user_id');
             $table->timestamps();
         });
     }

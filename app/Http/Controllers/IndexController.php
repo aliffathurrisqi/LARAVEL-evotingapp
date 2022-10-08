@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Candidate;
 use App\Models\User;
 use App\Models\Vote;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
 {
@@ -16,7 +18,8 @@ class IndexController extends Controller
             "title" => "Home",
             "votes" => Vote::with(['users', 'candidates'])->get(),
             "candidates" => Candidate::with(['votes'])->get(),
-            "users" => User::all()
+            "users" => User::all(),
+            "checks" => Vote::where('user_id', md5(auth()->user()->id))
         ]
     );
     }
@@ -27,8 +30,18 @@ class IndexController extends Controller
             "title" => "Perolehan",
             "votes" => Vote::with(['users', 'candidates'])->get(),
             "candidates" => Candidate::with(['votes'])->get(),
-            "users" => User::all()
+            "users" => User::all(),
         ]
     );
+    }
+
+    public function vote(Request $request)
+    {
+        Vote::create([
+            'candidate_id' => $request->candidate_id,
+            'user_id' => md5($request->user_id),
+        ]);
+
+        return redirect('/votes');
     }
 }

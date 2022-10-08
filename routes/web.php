@@ -17,8 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'default']);
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
-Route::get('/home', [IndexController::class, 'index']);
+Route::post('/login/auth', [LoginController::class, 'authenticate']);
 
-Route::get('/votes', [IndexController::class, 'show']);
+Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
+
+Route::get('/home', [IndexController::class, 'index'])->middleware('user');
+
+Route::post('/votes/make', [IndexController::class, 'vote'])->middleware('user');
+
+Route::get('/votes', [IndexController::class, 'show'])->middleware('user');

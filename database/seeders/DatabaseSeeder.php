@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'username' => "admin",
             'name' => "Aliffathur Risqi Hidayat",
-            'password' => Hash::make("31032000Alif"),
+            'password' => Hash::make("password"),
             'isAdmin' => true
             ]);
 
@@ -34,12 +34,12 @@ class DatabaseSeeder extends Seeder
         User::factory($jmlSuara)->create();
         // Vote::factory(20)->create();
 
-        for($i = 2; $i<= $jmlSuara+1 ; $i++){
-            Vote::create([
-                'candidate_id' => mt_rand(1, $jmlCandidate ),
-                'user_id' => $i
-            ]);
-        }
+        // for($i = 2; $i<= $jmlSuara+1 ; $i++){
+        //     Vote::create([
+        //         'candidate_id' => mt_rand(1, $jmlCandidate ),
+        //         'user_id' => $i
+        //     ]);
+        // }
 
     }
 }

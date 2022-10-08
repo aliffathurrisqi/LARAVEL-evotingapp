@@ -1,6 +1,11 @@
 @extends('layouts.main')
 @section('content')
-    @include('partials.navbar')
+    @if ($checks->count())
+        <script>
+            location.replace('/votes');
+            alert('Anda sudah melakukan pemilihan');
+        </script>
+    @endif
     <div class="container-fluid p-4">
         <div class="row">
             <h3>Pilih Kandidat</h3>
@@ -31,9 +36,10 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                                <form action="/vote/make" method="POST">
-                                    <input type="text" name="candidate_id" value="{{ $candidate->id }}">
-                                    <input type="text" name="user_id" value="{{ $candidate->id }}">
+                                <form action="/votes/make" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <button type="submit" class="btn btn-primary">Yakin</button>
                                 </form>
                             </div>
