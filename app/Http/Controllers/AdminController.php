@@ -19,4 +19,38 @@ class AdminController extends Controller
         ]
         );
     }
+
+    public function candidate(){
+        return view('admin_candidate',
+        [
+            'title'=> "Kandidat",
+            "candidates" => Candidate::all(),
+        ]
+        );
+    }
+
+    public function addCandidate(Request $request)
+    {
+        Candidate::create([
+            'name' => $request->name,
+            'color' => $request->color,
+        ]);
+
+        return redirect('/admin/candidate');
+    }
+
+    public function editCandidate(Request $request)
+    {
+        Candidate::find($request->id)->update(['name' => $request->name, 'color' => $request->color]);
+
+        return redirect('/admin/candidate');
+    }
+
+    public function deleteCandidate(Request $request)
+    {
+        Candidate::find($request->id)->delete();
+        Vote::where('candidate_id', $request->id)->delete();
+
+        return redirect('/admin/candidate');
+    }
 }

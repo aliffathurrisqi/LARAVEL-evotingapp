@@ -7,17 +7,17 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
+        <li class="nav-item mb-2">
             <a href="/admin" class="nav-link {{ $title === 'Dashboard' ? 'active' : 'text-white' }}">
                 <i class="bi bi-pie-chart-fill me-1"></i> Dashboard
             </a>
         </li>
-        <li>
-            <a href="/admin/candidate" class="nav-link {{ $title === 'Candidate' ? 'active' : 'text-white' }}">
+        <li class="nav-item mb-2">
+            <a href="/admin/candidate" class="nav-link {{ $title === 'Kandidat' ? 'active' : 'text-white' }}">
                 <i class="bi bi-person-circle me-1"></i> Kandidat
             </a>
         </li>
-        <li>
+        <li class="nav-item mb-2">
             <a href="/admin/user" class="nav-link {{ $title === 'User' ? 'active' : 'text-white' }}">
                 <i class="bi bi-person-fill me-1"></i> User
             </a>

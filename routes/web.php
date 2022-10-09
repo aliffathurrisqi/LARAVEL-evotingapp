@@ -31,3 +31,11 @@ Route::post('/votes/make', [IndexController::class, 'vote'])->middleware('user')
 Route::get('/votes', [IndexController::class, 'show'])->middleware('user');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
+
+Route::get('/admin/candidate', [AdminController::class, 'candidate'])->middleware('admin');
+
+Route::post('/admin/candidate/add', [AdminController::class, 'addCandidate'])->middleware('admin');
+
+Route::post('/admin/candidate/edit', [AdminController::class, 'editCandidate'])->middleware('admin');
+
+Route::post('/admin/candidate/delete', [AdminController::class, 'deleteCandidate'])->middleware('admin');

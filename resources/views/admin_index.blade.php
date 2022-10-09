@@ -1,7 +1,7 @@
 @extends('layouts.main_admin')
 @section('content')
-    <div class="row">
-        <div class="col-md-12 p-5">
+    <div class="row p-4">
+        <div class="col">
             <div class="card shadow">
                 <div class="card-header p-3">
                     <h6 class="m-0 font-weight-bold text-dark">Perolehan Suara</h6>
@@ -34,7 +34,8 @@
             </div>
         </div>
 
-        <div class="col-md-12 mb-4 p-5">
+
+        <div class="col">
             <div class="card shadow mb-4">
                 <div class="card-header p-3">
                     <h6 class="m-0 font-weight-bold text-dark">Suara Total</h6>

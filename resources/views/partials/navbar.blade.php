@@ -22,7 +22,7 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span class="me-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                        <img class="img-profile rounded-circle" height="50"src="img/male.svg">
+                        <img class="img-profile rounded-circle" height="50"src="/img/male.svg">
                     </a>
                     <ul class="dropdown-menu w-100">
                         <form action="/logout" method="POST">

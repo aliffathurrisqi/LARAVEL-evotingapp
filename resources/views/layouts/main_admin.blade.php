@@ -20,7 +20,7 @@
 
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" style="min-height:700px">
             <div class="col-md-2 p-0">
                 @include('partials.admin_sidebar')
             </div>
