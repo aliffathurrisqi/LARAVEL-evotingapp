@@ -6,6 +6,7 @@ use App\Models\Candidate;
 use App\Models\Vote;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -15,7 +16,7 @@ class AdminController extends Controller
             'title'=> "Dashboard",
             "votes" => Vote::with(['users', 'candidates'])->get(),
             "candidates" => Candidate::with(['votes'])->get(),
-            "users" => User::all(),
+            "users" => User::where('isAdmin',false),
         ]
         );
     }
@@ -53,4 +54,27 @@ class AdminController extends Controller
 
         return redirect('/admin/candidate');
     }
+
+    public function user(){
+        return view('admin_user',
+        [
+            'title'=> "User",
+            "usertotal" => User::where('isAdmin',false),
+            "users" => User::where('isAdmin',false)->with(['votes'])->filter(request(['search']))->orderBy('username')->paginate(20),
+        ]
+        );
+    }
+
+    public function addUser(Request $request)
+    {
+        User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'isAdmin' => false
+        ]);
+
+        return redirect('/admin/user');
+    }
+
 }

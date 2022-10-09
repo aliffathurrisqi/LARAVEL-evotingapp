@@ -39,3 +39,7 @@ Route::post('/admin/candidate/add', [AdminController::class, 'addCandidate'])->m
 Route::post('/admin/candidate/edit', [AdminController::class, 'editCandidate'])->middleware('admin');
 
 Route::post('/admin/candidate/delete', [AdminController::class, 'deleteCandidate'])->middleware('admin');
+
+Route::get('/admin/user', [AdminController::class, 'user'])->middleware('admin');
+
+Route::post('/admin/user/add', [AdminController::class, 'addUser'])->middleware('admin');

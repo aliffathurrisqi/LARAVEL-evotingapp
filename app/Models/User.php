@@ -18,7 +18,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    // protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -36,5 +36,14 @@ class User extends Authenticatable
 
     public function votes(){
         return $this->belongsTo(Vote::class);
+    }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('username', 'like', '%' . $search . '%')
+                ->orwhere('name', 'like', '%' . $search . '%')
+                ->orderBy('username');
+        });
     }
 }

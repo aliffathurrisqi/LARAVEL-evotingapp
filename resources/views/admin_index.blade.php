@@ -1,7 +1,7 @@
 @extends('layouts.main_admin')
 @section('content')
     <div class="row p-4">
-        <div class="col">
+        <div class="col-md-6 mb-3">
             <div class="card shadow">
                 <div class="card-header p-3">
                     <h6 class="m-0 font-weight-bold text-dark">Perolehan Suara</h6>
@@ -35,21 +35,21 @@
         </div>
 
 
-        <div class="col">
-            <div class="card shadow mb-4">
+        <div class="col-md-6 mb-3">
+            <div class="card shadow">
                 <div class="card-header p-3">
                     <h6 class="m-0 font-weight-bold text-dark">Suara Total</h6>
                 </div>
                 <div class="card-body">
 
                     <h4 class="small font-weight-bold">Suara Masuk
-                        <span class="float-end">{{ number_format(($votes->count() / ($users->count() - 1)) * 100, 2) }}
+                        <span class="float-end">{{ number_format(($votes->count() / $users->count()) * 100, 2) }}
                             %</span>
                     </h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-danger" role="progressbar"
-                            style="width: {{ number_format(($votes->count() / ($users->count() - 1)) * 100, 2) }}%;"
-                            aria-valuenow="{{ number_format(($votes->count() / ($users->count() - 1)) * 100, 2) }}"
+                            style="width: {{ number_format(($votes->count() / $users->count()) * 100, 2) }}%;"
+                            aria-valuenow="{{ number_format(($votes->count() / $users->count()) * 100, 2) }}"
                             aria-valuemin="0" aria-valuemax="100">
                             @if ($votes->count() > 0)
                                 {{ $votes->count() }}
@@ -58,15 +58,15 @@
                     </div>
 
                     <h4 class="small font-weight-bold">Suara Kosong<span
-                            class="float-end">{{ number_format(100 - ($votes->count() / ($users->count() - 1)) * 100, 2) }}
+                            class="float-end">{{ number_format(100 - ($votes->count() / $users->count()) * 100, 2) }}
                             %</span></h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-dark" role="progressbar"
-                            style="width: {{ number_format(100 - ($votes->count() / ($users->count() - 1)) * 100, 2) }}%"
-                            aria-valuenow="{{ number_format(100 - ($votes->count() / ($users->count() - 1)) * 100, 2) }}"
+                            style="width: {{ number_format(100 - ($votes->count() / $users->count()) * 100, 2) }}%"
+                            aria-valuenow="{{ number_format(100 - ($votes->count() / $users->count()) * 100, 2) }}"
                             aria-valuemin="0" aria-valuemax="100">
                             @if ($users->count() - $votes->count() > 0)
-                                {{ $users->count() - $votes->count() - 1 }}
+                                {{ $users->count() - $votes->count() }}
                             @endif
                         </div>
                     </div>
@@ -75,5 +75,27 @@
             </div>
         </div>
 
+    </div>
+    <div class="row p-4 pt-0">
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-header p-3">
+                    <h6 class="m-0 font-weight-bold text-dark">Total User</h6>
+                </div>
+                <div class="card-body">
+
+                    <h4 class="small font-weight-bold">Pengguna Terdaftar
+                        <span class="float-end">
+                            @if ($users->count())
+                                {{ $users->count() }}
+                            @else
+                                0
+                            @endif
+                        </span>
+                    </h4>
+
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

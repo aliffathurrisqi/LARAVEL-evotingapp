@@ -1,7 +1,7 @@
 @extends('layouts.main_admin')
 @section('content')
     <div class="row p-4">
-        <h3>Pilih Kandidat</h3>
+        <h3>Kandidat</h3>
         <div class="mt-1 mb-3">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCandidate">Tambah Kandidat</button>
         </div>

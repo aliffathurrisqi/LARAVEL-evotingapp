@@ -30,7 +30,7 @@ class IndexController extends Controller
             "title" => "Perolehan",
             "votes" => Vote::with(['users', 'candidates'])->get(),
             "candidates" => Candidate::with(['votes'])->get(),
-            "users" => User::all(),
+            "users" => User::where('isAdmin',false),
         ]
     );
     }
